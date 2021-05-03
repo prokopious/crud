@@ -33,19 +33,15 @@
   grid-template-rows: 50px 50px;
   padding-top: 30px;
   padding-left: 20px;
-
 }
-
 
 .cont2 {
   display: grid;
-  grid-template-columns: 100%; 
+  grid-template-columns: 100%;
 
   padding-top: 30px;
   padding-left: 20px;
   padding-bottom: 800px;
-
-
 }
 
 a {
@@ -54,7 +50,7 @@ a {
 }
 
 html {
-  background-image: url('https://images.pexels.com/photos/281260/pexels-photo-281260.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260');
+  background-image: url("https://images.pexels.com/photos/1056528/pexels-photo-1056528.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
   font-family: helvetica;
   color: white;
 }
@@ -66,12 +62,10 @@ input {
 }
 
 #f {
-  
   font-size: 20px;
   background-color: white;
   color: white;
   padding-bottom: 15px;
-
 }
 
 ul {
@@ -84,6 +78,7 @@ hr {
 
 .nav-link {
   color: white;
+  font-size: 16px;
 }
 
 .win {
@@ -97,9 +92,11 @@ input {
   border-radius: 4px;
 }
 
-input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
   color: white;
-  opacity: 1; /* Firefox */
+  opacity: .5; /* Firefox */
+  font-style: italic;
 }
 
 button {
@@ -122,3 +119,5 @@ button {
 nav {
   padding-left: 10px;
 }
+
+

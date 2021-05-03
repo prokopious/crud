@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const FlightsList = () => {
   const [flights, setFlights] = useState([]);
-  const [currentFlight, setCurrentFlight] = useState(null);
+
   const [currentIndex, setCurrentIndex] = useState(-1);
   const [searchTitle, setSearchTitle] = useState("");
 
@@ -91,7 +91,8 @@ const FlightsList = () => {
       </div>
   
       <div className="col-md-6">
-        <h4>All Flights</h4>
+        <h4>All Flights (click to update):</h4>
+        <br></br>
 
         <ul className="list-group">
           {flights &&
@@ -103,11 +104,14 @@ const FlightsList = () => {
                 onClick={() => setActiveFlight(flight, index)}
                 key={index}
               >
-                {flight.airline} flight {flight.title} to {flight.ato}
+                <span id="sp">{flight.airline}</span> flight <span id="sp">{flight.title}</span> to {flight.ato}
                
               </li></Link>
             ))}
         </ul>
+<br></br>
+        <hr></hr>
+        <br></br><br></br>
    
         <div className="link2">
           <Link to={"/add"} className="nav-link">
