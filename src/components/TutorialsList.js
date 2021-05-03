@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const FlightsList = () => {
   const [flights, setFlights] = useState([]);
 
-  const [currentIndex, setCurrentIndex] = useState(-1);
+  
   const [searchTitle, setSearchTitle] = useState("");
 
   useEffect(() => {
