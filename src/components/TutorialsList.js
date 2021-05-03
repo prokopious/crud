@@ -50,6 +50,8 @@ const FlightsList = () => {
       });
   };
 
+
+
   const findByTitle = () => {
     TutorialDataService.findByTitle(searchTitle)
       .then(response => {
@@ -61,14 +63,18 @@ const FlightsList = () => {
       });
   };
 
+
+
   return (
-    <div className="list row">
+    <div className="cont2">
+      
+      
       <div className="col-md-8">
         <div className="input-group mb-3">
           <input
             type="text"
             className="form-control"
-            placeholder="Search by title"
+            placeholder="Search by flight number"
             value={searchTitle}
             onChange={onChangeSearchTitle}
           />
@@ -83,69 +89,36 @@ const FlightsList = () => {
           </div>
         </div>
       </div>
+  
       <div className="col-md-6">
-        <h4>Flights List</h4>
+        <h4>All Flights</h4>
 
         <ul className="list-group">
           {flights &&
             flights.map((flight, index) => (
-              <li
+              <Link id="f" to={"/flights/" + flight.id}><li
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
                 }
                 onClick={() => setActiveFlight(flight, index)}
                 key={index}
               >
-                {flight.title} ~ {flight.description}
-              </li>
+                {flight.airline} flight {flight.title} to {flight.ato}
+               
+              </li></Link>
             ))}
         </ul>
-
-        <button
-          className="m-3 btn btn-sm btn-danger"
-          onClick={removeAllFlights}
-        >
-          Remove All
-        </button>
+   
+        <div className="link2">
+          <Link to={"/add"} className="nav-link">
+            Add flight
+          </Link>
+        </div>
+  
       </div>
-      <div className="col-md-6">
-        {currentFlight ? (
-          <div>
-            <h4>Flight</h4>
-            <div>
-              <label>
-                <strong>Title:</strong>
-              </label>{" "}
-              {currentFlight.title}
-            </div>
-            <div>
-              <label>
-                <strong>Description:</strong>
-              </label>{" "}
-              {currentFlight.description}
-            </div>
-            <div>
-              <label>
-                <strong>Status:</strong>
-              </label>{" "}
-              {currentFlight.published ? "Published" : "Pending"}
-            </div>
 
-            <Link
-              to={"/flights/" + currentFlight.id}
-              className="badge badge-warning"
-            >
-              Edit
-            </Link>
-          </div>
-        ) : (
-          <div>
-            <br />
-            <p>Please click on a flight...</p>
-          </div>
-        )}
       </div>
-    </div>
+   
   );
 };
 

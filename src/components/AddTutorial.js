@@ -51,7 +51,7 @@ const AddFlight = () => {
   };
 
   return (
-    <div className="submit-form">
+    <div className="cont"><div className="submit-form">
       {submitted ? (
         <div>
           <h4>You submitted successfully!</h4>
@@ -131,7 +131,7 @@ const AddFlight = () => {
           </button>
         </div>
       )}
-    </div>
+    </div></div>
   );
 };
 

@@ -1,100 +1,108 @@
 import React, { useState, useEffect } from "react";
 import TutorialDataService from "../services/TutorialService";
 
-const Flight = (props) => {
-  const initialFlightState = {
+const Tutorial = props => {
+  const initialTutorialState = {
     id: null,
     title: "",
     description: "",
+    gate: "",
+    published: false
   };
-  const [currentFlight, setCurrentFlight] = useState(initialFlightState);
+  const [currentTutorial, setCurrentTutorial] = useState(initialTutorialState);
   const [message, setMessage] = useState("");
 
-  const getFlight = (id) => {
+  const getTutorial = id => {
     TutorialDataService.get(id)
-      .then((response) => {
-        setCurrentFlight(response.data);
+      .then(response => {
+        setCurrentTutorial(response.data);
         console.log(response.data);
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e);
       });
   };
 
   useEffect(() => {
-    getFlight(props.match.params.id);
+    getTutorial(props.match.params.id);
   }, [props.match.params.id]);
 
-  const handleInputChange = (event) => {
+
+
+
+
+  const handleInputChange = event => {
     const { name, value } = event.target;
-    setCurrentFlight({ ...currentFlight, [name]: value });
+    setCurrentTutorial({ ...currentTutorial, [name]: value });
   };
 
-  const updatePublished = (status) => {
+  const updatePublished = status => {
     var data = {
-      id: currentFlight.id,
-      title: currentFlight.title,
-      description: currentFlight.description,
-      published: status,
+      id: currentTutorial.id,
+      title: currentTutorial.title,
+      description: currentTutorial.description,
+      gate: currentTutorial.gate,
+      published: status
     };
 
-    TutorialDataService.update(currentFlight.id, data)
-      .then((response) => {
-        setCurrentFlight({ ...currentFlight, published: status });
+    TutorialDataService.update(currentTutorial.id, data)
+      .then(response => {
+        setCurrentTutorial({ ...currentTutorial, published: status });
         console.log(response.data);
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e);
       });
   };
 
-  const updateFlight = () => {
-    TutorialDataService.update(currentFlight.id, currentFlight)
-      .then((response) => {
+  const updateTutorial = () => {
+    TutorialDataService.update(currentTutorial.id, currentTutorial)
+      .then(response => {
         console.log(response.data);
-        setMessage("The flight was updated successfully!");
+        setMessage("The tutorial was updated successfully!");
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e);
       });
   };
 
-  const deleteFlight = () => {
-    TutorialDataService.remove(currentFlight.id)
-      .then((response) => {
+  const deleteTutorial = () => {
+    TutorialDataService.remove(currentTutorial.id)
+      .then(response => {
         console.log(response.data);
         props.history.push("/flights");
       })
-      .catch((e) => {
+      .catch(e => {
         console.log(e);
       });
   };
 
   return (
-    <div>
-      {currentFlight ? (
+    <div className="cont">
+      {currentTutorial ? (
         <div className="edit-form">
-          <h4>Tutorial</h4>
+          <h4>{currentTutorial.airline} flight {currentTutorial.title}</h4>
           <form>
             <div className="form-group">
-              <label htmlFor="title">Title</label>
+              <label htmlFor="gate">Gate</label>
               <input
                 type="text"
                 className="form-control"
-                id="title"
-                name="title"
-                value={currentFlight.title}
+                id="gate"
+                name="gate"
+                value={currentTutorial.gate}
                 onChange={handleInputChange}
               />
             </div>
+          
             <div className="form-group">
-              <label htmlFor="description">Description</label>
+              <label htmlFor="description">Scheduled</label>
               <input
                 type="text"
                 className="form-control"
                 id="description"
                 name="description"
-                value={currentFlight.description}
+                value={currentTutorial.description}
                 onChange={handleInputChange}
               />
             </div>
@@ -103,34 +111,34 @@ const Flight = (props) => {
               <label>
                 <strong>Status:</strong>
               </label>
-              {currentFlight.published ? "Published" : "Pending"}
+              {currentTutorial.published ? "Delayed" : "On time"}
             </div>
           </form>
 
-          {currentFlight.published ? (
+          {currentTutorial.published ? (
             <button
               className="badge badge-primary mr-2"
               onClick={() => updatePublished(false)}
             >
-              UnPublish
+              On Time
             </button>
           ) : (
             <button
               className="badge badge-primary mr-2"
               onClick={() => updatePublished(true)}
             >
-              Publish
+              Delay
             </button>
           )}
 
-          <button className="badge badge-danger mr-2" onClick={deleteFlight}>
+          <button className="badge badge-danger mr-2" onClick={deleteTutorial}>
             Delete
           </button>
 
           <button
             type="submit"
             className="badge badge-success"
-            onClick={updateFlight}
+            onClick={updateTutorial}
           >
             Update
           </button>
@@ -139,11 +147,11 @@ const Flight = (props) => {
       ) : (
         <div>
           <br />
-          <p>Please click on a Flight...</p>
+          <p>Please click on a Tutorial...</p>
         </div>
       )}
     </div>
   );
 };
 
-export default Flight;
+export default Tutorial;
