@@ -30,14 +30,11 @@ const FlightsList = () => {
 
   const refreshList = () => {
     retrieveFlights();
-    setCurrentFlight(null);
+  
     setCurrentIndex(-1);
   };
 
-  const setActiveFlight = (flight, index) => {
-    setCurrentFlight(flight);
-    setCurrentIndex(index);
-  };
+
 
   const removeAllFlights = () => {
     TutorialDataService.removeAll()
