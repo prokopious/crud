@@ -80,13 +80,7 @@ const FlightsList = () => {
         <ul className="list-group">
           {flights &&
             flights.map((flight, index) => (
-              <Link id="f" to={"/flights/" + flight.id}><li
-                className={
-                  "list-group-item " + (index === currentIndex ? "active" : "")
-                }
-               
-                key={index}
-              >
+              <Link id="f" to={"/flights/" + flight.id}><li>
                 <span id="sp">{flight.airline}</span> flight <span id="sp">{flight.title}</span> to {flight.ato}
                
               </li></Link>
