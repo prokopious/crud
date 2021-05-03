@@ -36,16 +36,6 @@ const FlightsList = () => {
 
 
 
-  const removeAllFlights = () => {
-    TutorialDataService.removeAll()
-      .then(response => {
-        console.log(response.data);
-        refreshList();
-      })
-      .catch(e => {
-        console.log(e);
-      });
-  };
 
 
 
