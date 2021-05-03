@@ -10,12 +10,14 @@ import TutorialsList from "./components/TutorialsList";
 function App() {
   return (
     <div>
-            <nav className="navb">
-        <h3 className="win">
+            <nav id="navc" className="navb">
+        <div><h3 className="win">
     
             Airport Admin Portal
       
-        </h3>
+        </h3></div>
+        <div id="main"><a id="main2" href="https://upbeat-ardinghelli-ca088b.netlify.app/">Airport Main</a></div>
+
 
       </nav>
       <nav className="navb">
