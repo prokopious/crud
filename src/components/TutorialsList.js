@@ -12,6 +12,10 @@ const FlightsList = () => {
     retrieveFlights();
   }, []);
 
+  function refreshPage() {
+    window.location.reload(false);
+  }
+
   const onChangeSearchTitle = e => {
     const searchTitle = e.target.value;
     setSearchTitle(searchTitle);
@@ -68,6 +72,13 @@ const FlightsList = () => {
               onClick={findByTitle}
             >
               Search
+            </button>
+            <button id='refresh'
+              className="btn btn-outline-secondary"
+              type="button"
+              onClick={refreshPage}
+            >
+              Refresh flights
             </button>
           </div>
         </div>

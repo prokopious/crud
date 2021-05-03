@@ -135,3 +135,7 @@ nav {
   color: white;
   text-decoration: underline;
 }
+
+#refresh {
+  margin-left: 5px;
+}

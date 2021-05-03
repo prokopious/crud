@@ -7,7 +7,9 @@ import AddTutorial from "./components/AddTutorial";
 import Tutorial from "./components/Tutorial";
 import TutorialsList from "./components/TutorialsList";
 
+
 function App() {
+
   return (
     <div>
       <nav id="navc" className="navb">
@@ -27,7 +29,11 @@ function App() {
           </Link>
         </div>
         <div className="link">
-          <Link to={"/"} className="nav-link">
+          <Link
+            to={"/"}
+            
+            className="nav-link"
+          >
             Flights
           </Link>
         </div>
