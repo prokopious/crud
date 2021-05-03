@@ -98,7 +98,7 @@ const FlightsList = () => {
                 className={
                   "list-group-item " + (index === currentIndex ? "active" : "")
                 }
-                onClick={() => setActiveFlight(flight, index)}
+               
                 key={index}
               >
                 <span id="sp">{flight.airline}</span> flight <span id="sp">{flight.title}</span> to {flight.ato}
