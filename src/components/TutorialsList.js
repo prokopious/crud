@@ -28,11 +28,7 @@ const FlightsList = () => {
       });
   };
 
-  const refreshList = () => {
-    retrieveFlights();
-  
-    setCurrentIndex(-1);
-  };
+
 
 
 
